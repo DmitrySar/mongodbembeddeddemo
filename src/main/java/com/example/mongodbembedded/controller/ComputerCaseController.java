@@ -3,10 +3,8 @@ package com.example.mongodbembedded.controller;
 import com.example.mongodbembedded.entity.ComputerCase;
 import com.example.mongodbembedded.repository.ComputerCaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ComputerCaseController {
@@ -19,7 +17,8 @@ public class ComputerCaseController {
     }
 
     @PostMapping
-    public void addComputerCase(@RequestBody ComputerCase computerCase) {
+    public HttpStatus addComputerCase(@RequestBody ComputerCase computerCase) {
         repository.save(computerCase);
+        return HttpStatus.OK;
     }
 }
